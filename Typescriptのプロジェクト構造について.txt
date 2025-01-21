@@ -1,0 +1,71 @@
+TypeScriptプロジェクトでは、通常、TypeScriptのコードを編集するファイルは .ts または .tsx ファイルです。
+以下に具体的な流れを説明します。
+
+
+
+1. ファイルの作成場所
+TypeScriptのコードは、tsconfig.jsonで指定したrootDirディレクトリ内に作成します。
+デフォルトではtsconfig.jsonのrootDirが設定されていない場合、TypeScriptコードはプロジェクトのどこにでも置けますが、
+通常は以下のような構造を作成します：
+
+my-typescript-project/
+├── src/             # TypeScriptコードを保存するフォルダ
+│   ├── index.ts     # メインのエントリーポイント
+│   └── utils.ts     # 補助的なロジックを分割して保存
+├── dist/            # コンパイル後のJavaScriptを出力
+├── package.json     # npmの設定ファイル
+├── tsconfig.json    # TypeScriptの設定ファイル
+└── node_modules/    # npmモジュール
+
+srcディレクトリを作成し、そこにTypeScriptファイルを配置します。
+
+
+
+2. 作業するファイル
+メインのエントリーポイント
+通常、プロジェクトのメインファイルとしてsrc/index.tsを作成します。
+このファイルはプロジェクトのエントリーポイントとして機能し、アプリケーション全体の起動や主要なロジックを記述します。
+
+例: src/index.ts
+
+import { greet } from './utils';
+
+const message = greet('World');
+console.log(message);
+
+補助ファイル
+大きなプロジェクトでは、機能を分割して管理するために、他の.tsファイルを作成します。
+
+例: src/utils.ts
+
+export const greet = (name: string): string => {
+  return `Hello, ${name}!`;
+};
+
+
+
+3. TypeScriptコードのコンパイル
+作成した.tsファイルをコンパイルして、distディレクトリにJavaScriptファイルを生成します。以下のコマンドを実行します
+
+npx tsc
+
+これにより、以下のような構造が生成されます：
+
+my-typescript-project/
+├── src/
+│   ├── index.ts
+│   └── utils.ts
+├── dist/
+│   ├── index.js
+│   └── utils.js
+├── package.json
+├── tsconfig.json
+└── node_modules/
+
+
+
+4. 編集する際の注意
+TypeScriptコードはsrc内に整理するのが一般的です。
+必要に応じて、ファイルを役割ごとに分けるとコードの管理がしやすくなります。
+TypeScriptをコンパイルしてJavaScriptに変換する際は、.tsファイルを直接実行するのではなく、dist内のJavaScriptファイルを使います。
+これでTypeScriptを効率的に編集できます

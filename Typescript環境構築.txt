@@ -1,0 +1,84 @@
+1. Node.jsとnpmをインストール
+TypeScriptを使うには、Node.jsとそのパッケージマネージャ（npm）が必要です。
+
+Node.jsのインストール: 公式サイト Node.js から最新のLTS版をインストールしてください。
+
+インストール確認: VS Codeのターミナルで以下のコマンドを実行し、インストールされていることを確認します。
+
+node -v
+npm -v
+
+
+
+2. TypeScriptをインストール
+プロジェクトディレクトリを作成: 作業用ディレクトリを作成し、移動します。
+
+mkdir my-typescript-project
+cd my-typescript-project
+
+npm初期化: プロジェクトをnpmで管理できるようにします。
+
+npm init -y
+
+TypeScriptをインストール: ローカルにTypeScriptをインストールします。
+
+npm install typescript --save-dev
+
+インストール確認: インストールしたTypeScriptのバージョンを確認します。
+
+npx tsc --version
+
+
+
+3. TypeScript設定ファイルの作成
+tsconfig.jsonを生成: TypeScriptの設定ファイルを生成します。
+
+npx tsc --init
+
+基本的な設定例: tsconfig.jsonの内容を以下のように編集します。
+※保存をすること
+
+{
+  "compilerOptions": {
+    "target": "ES6",                   
+    "module": "commonjs",              
+    "outDir": "./dist",                
+    "rootDir": "./src",                
+    "strict": true,                    
+    "esModuleInterop": true,           
+    "skipLibCheck": true,              
+    "forceConsistentCasingInFileNames": true 
+  }
+}
+
+
+
+4. プロジェクトの構造を準備
+フォルダを作成: ソースコード用のフォルダを作成します。
+
+mkdir src
+
+サンプルファイルを作成: 
+src/index.ts ファイルを作成します。
+
+
+
+5. TypeScriptをコンパイル
+コンパイル実行: 以下のコマンドでTypeScriptコードをコンパイルし、JavaScriptに変換します。
+
+npx tsc
+
+出力確認: dist/index.js が生成されているはずです。
+
+
+
+6. JavaScriptを実行
+生成されたJavaScriptを実行: コンパイルされたJavaScriptをNode.jsで実行します。
+
+node dist/index.js
+
+7. VS Codeの拡張機能のインストール
+VS Codeで以下の拡張機能をインストールするとTypeScript開発がより便利になります。
+ESLint: コードの品質チェック
+Prettier: コードフォーマッタ
+TypeScript Compiler (デフォルトでサポートされている場合もあります)
